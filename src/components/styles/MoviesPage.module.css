@@ -1,0 +1,28 @@
+.container {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.thumb {
+  height: 225px;
+}
+
+.item {
+  width: 400px;
+  margin-right: 30px;
+}
+
+.input {
+  margin-right: 10px;
+}
+
+.button {
+  background-color: greenyellow;
+  outline: none;
+  border: 2px solid greenyellow;
+  border-radius: 5%;
+}
