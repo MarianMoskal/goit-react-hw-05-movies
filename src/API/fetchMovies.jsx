@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https:api.themoviedb.org/3/";
+const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "d2531e14d49c44f419dbab0e50f36d2c";
 
 axios.defaults.baseURL = BASE_URL;
@@ -8,7 +8,7 @@ axios.defaults.params = {
   api_key: API_KEY,
 };
 
-const fetchData = async (url = "", query) => {
+const fetchData = async (url = "", query = null) => {
   const response = await axios(url, { params: { query } });
   // console.log(response);
   return (response.status = 200 ? await response.data : Promise.reject(Error));

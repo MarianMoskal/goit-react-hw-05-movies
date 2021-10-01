@@ -35,7 +35,7 @@ function MovieDetailsPageView() {
   };
 
   const onGoBack = () => {
-    history.push(location.state ? location.state.from : null);
+    history.push(location?.state?.from ?? "/");
   };
 
   return (
@@ -54,7 +54,7 @@ function MovieDetailsPageView() {
           <div className={container}>
             <div className={thumb}>
               <img
-                src={`https:image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt="Movie cover"
               />
             </div>

@@ -48,7 +48,7 @@ function CastView(props) {
                 <div className={thumb}>
                   <img
                     alt={name}
-                    src={`https:image.tmdb.org/t/p/w500${profile_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                   />
                 </div>
                 <p>
@@ -68,7 +68,7 @@ function CastView(props) {
                 <div className={thumb}>
                   <img
                     alt={name}
-                    src={`https:image.tmdb.org/t/p/w500${profile_path}`}
+                    src={`https://image.tmdb.org/t/p/w500${profile_path}`}
                   />
                 </div>
                 <p>

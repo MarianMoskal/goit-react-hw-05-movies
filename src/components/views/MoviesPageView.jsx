@@ -40,12 +40,6 @@ function MoviesPageView() {
     }
   }, [location.search, query, search]);
 
-  // useEffect(() => {
-  //     if (movieId) {
-  //         setMovies(null)
-  //     }
-  // }, [movieId])
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
