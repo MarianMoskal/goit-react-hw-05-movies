@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, lazy } from "react";
 import { fetchMovieById } from "../../API/fetchMovies";
-import { useParams, useLocation, useHistory } from "react-router-dom";
-// import Loader from "react-loader-spinner";
+import {
+  useParams,
+  useLocation,
+  useHistory,
+  useRouteMatch,
+} from "react-router-dom";
+import { Switch, Route } from "react-router";
+import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
-import CastView from "./CastView";
-import ReviewsView from "./ReviewsView";
+// import CastView from "./CastView";
+// import ReviewsView from "./ReviewsView";
 import {
   container,
   thumb,
@@ -13,9 +19,18 @@ import {
   list,
 } from "../styles/MovieDetailsPage.module.css";
 
+const CastView = lazy(() =>
+  import("./CastView" /*webpackChunkName: 'CastView' */)
+);
+
+const ReviewsView = lazy(() =>
+  import("./ReviewsView" /*webpackChunkName: 'ReviewsView' */)
+);
+
 function MovieDetailsPageView() {
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
+  const { path } = useRouteMatch();
   const { movieId } = useParams();
   const location = useLocation();
   const history = useHistory();
@@ -90,6 +105,28 @@ function MovieDetailsPageView() {
             </li>
           </ul>
           <hr />
+
+          <Suspense
+            fallback={
+              <Loader
+                color="#00BFFF"
+                type="ThreeDots"
+                timeout={3000}
+                height={150}
+                width={150}
+              />
+            }
+          >
+            <Switch>
+              <Route path={`${path}/cast`}>
+                <CastView />
+              </Route>
+
+              <Route path={`${path}/reviews`}>
+                <ReviewsView />
+              </Route>
+            </Switch>
+          </Suspense>
         </>
       )}
     </div>
@@ -121,18 +158,3 @@ export default MovieDetailsPageView;
                 </NavLink>
             </li>
         </ul> */
-
-/* <Suspense fallback={<Loader
-                    color="#00BFFF"
-                    type="ThreeDots"
-                    timeout={3000}
-                    height={150}
-                    width={150} />}>    
-                <Route path={`${path}/cast`}>
-                    <CastView/>
-                </Route>
-
-                <Route path={`${path}/reviews`}>
-                    <ReviewsView/>
-                </Route>
-            </Suspense>  */

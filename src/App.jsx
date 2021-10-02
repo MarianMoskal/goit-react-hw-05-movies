@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Switch, Route } from "react-router";
+import { Switch, Route, Redirect } from "react-router";
 import AppBar from "./components/AppBar/AppBar";
 import Loader from "react-loader-spinner";
 import { spinner } from "./components/styles/App.module.css";
@@ -55,7 +55,7 @@ function App() {
           </Route>
 
           <Route>
-            <HomePageView />
+            <Redirect to="/" />
           </Route>
         </Switch>
       </Suspense>
