@@ -54,9 +54,7 @@ function App() {
             <MovieDetailsPageView />
           </Route>
 
-          <Route>
-            <Redirect to="/" />
-          </Route>
+          <Redirect to="/" />
         </Switch>
       </Suspense>
     </div>
